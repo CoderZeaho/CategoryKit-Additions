@@ -415,6 +415,13 @@
  */
 - (CGFloat)widthWithFont:(UIFont*)font forHeight:(CGFloat)height;
 
+/**
+ 格式化数字为带单位的字符串
+ 
+ @return string with unit
+ */
+- (NSString *)stringFormatWithUnit;
+
 @end
 
 @interface NSString (JSONDeserializing)

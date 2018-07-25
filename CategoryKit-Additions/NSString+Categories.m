@@ -777,6 +777,19 @@ NSString *findLetter(int nCode);
     return [self sizeWithFont:font constrainedToSize:CGSizeMake(NSIntegerMax, height)].width;
 }
 
+- (NSString *)stringFormatWithUnit {
+    NSInteger realValue = [self integerValue];
+    if (realValue > 0 && realValue < 1000) {
+        return fmts(@"%ld", realValue);
+    } else if (realValue >= 1000 && realValue < 10000) {
+        return fmts(@"%.fk", realValue/1000.f);
+    } else if (realValue >= 10000) {
+        return fmts(@"%.fw", realValue/10000.f);
+    } else {
+        return fmts(@"%d", 0);
+    }
+}
+
 @end
 
 @implementation NSString (JSONDeserializing)
